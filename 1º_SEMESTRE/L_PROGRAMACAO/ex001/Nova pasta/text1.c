@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-int main() {
-	float a, b ,x;
+int main (){
+	int n1, n2, n3;
 	printf("Digite um numero: ");
-	scanf("%f", &a);
+	scanf("%i", &n1);
 	printf("Digite outro numero: ");
-	scanf("%f", &b);
-	x = a+b ;
-	printf("%f \n", x);
+	scanf("%i", &n2);
+	n3 = n1 + n2 ;
+	printf("A soma entre %d e %d e igual a %d\n", n1, n2, n3);
 }
