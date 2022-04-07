@@ -7,5 +7,6 @@ int main (){
 	printf("Digite outro numero: ");
 	scanf("%i", &n2);
 	n3 = n1 + n2 ;
-	printf("A soma entre %d e %d e igual a %d\n", n1, n2, n3);
+	printf("x = %d\n", n3);
 }
+
