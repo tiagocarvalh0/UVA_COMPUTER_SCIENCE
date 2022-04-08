@@ -1,7 +1,10 @@
+/*Escreva um programa que leia a quantidade de dias, horas, minutos e segundos do usuario. Calcule o total em segundos.*/
 #include <stdio.h>
 
 int main (){
+
 	int dias, horas, minutos, segundos, n1, n2, n3, total ;
+
 	printf("Digite a quantidade de DIAS: ");
 	scanf("%d", &dias);
 	printf("Digite a quantidade de HORAS: ");

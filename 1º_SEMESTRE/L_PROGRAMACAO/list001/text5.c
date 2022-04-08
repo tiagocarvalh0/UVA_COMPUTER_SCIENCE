@@ -1,6 +1,12 @@
+/*Fac¸a um programa que solicite o prec¸o de uma mercadoria e o percentual
+de desconto. Exiba o valor do desconto e o prec¸o a pagar.*/
+
 #include <stdio.h>
- int main (){
+
+int main (){
+
 	float valor_total, desconto, valor_desconto, total;
+
 	printf("Valor da mercadoria: R$ ");
 	scanf("%f", &valor_total);
 	printf("Porcentagem de desconto: ");

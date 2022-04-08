@@ -4,7 +4,9 @@ pesos 2, 4, 6, respectivamente.*/
 #include <stdio.h>
 
 int main (){
+
 	float nota1, nota2, nota3, media ; 
+
 	printf("Primeira nota: ");
 	scanf("%f", &nota1);
 	printf("Segunda nota: ");
