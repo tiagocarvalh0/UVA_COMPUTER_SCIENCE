@@ -7,11 +7,17 @@ Corporal (IMC).*/
 int main (void){
 
 	char nome[30];
+	float peso, altura, imc;
 	
 	printf("Digite seu nome: ");
 	scanf("%s", nome);
-
-	printf("%s", nome);
+	printf("Informe seu peso em KG: ");
+	scanf("%f", &peso);
+	printf("Informe sua altura em METROS: ");
+	scanf("%f", &altura);
+	imc = (peso / (altura / 0.5 ));
+	printf("Seu nome e %s \n", nome);
+	printf("Seu IMC: %.2f \n", imc);
 
 }
 
