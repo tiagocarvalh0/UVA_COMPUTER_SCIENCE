@@ -1,10 +1,14 @@
 #include <stdio.h>
 
-int main(){
-
-	int x ;
+int main()
+{
+	int segundos, min, horas ;
 	
-	scanf("%i", &x);
-	printf("%i:%i:%i", (x / 3600), (x / 60),  );
+	scanf("%i", &segundos);
+	horas = segundos / 3600 ;
+	segundos = segundos - (horas * 3600);
+	min = segundos / 60 ;
+	segundos = segundos - (min * 60);
+	printf("%i:%i:%i\n",horas, min, segundos);
 	
 }
