@@ -2,19 +2,21 @@
 
 int main ()
 {
-	int numero, x, cont_rnum ;
-	
+	int num_1, num_2, resto ;
 	printf("Digite um numero:\n");
-	scanf("%d", &numero);
+	scanf("%d", &num_1);
+	printf("Digite outro numero:\n");
+	scanf("%d", &num_2);
+	resto = num_1;
 	
-	x = 1;
-	while(x <= numero)
+	if((num_1 != 0) || (num_2 != 0))
 	{
-		x++;
-		if(numero % x == 0)
+		while(resto - num_2 >= 0)
 		{
-			cont_rnum++;
+			resto = resto - num_2;
 		}
+		printf("RESTO = %d\n", resto);
 	}
-	
+	else
+	printf("Numero Invalido\n");
 }
