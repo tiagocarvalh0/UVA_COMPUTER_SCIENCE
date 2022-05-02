@@ -9,7 +9,7 @@ int main ()
 	scanf("%d", &num_2);
 	resto = num_1;
 	
-	if((num_1 != 0) || (num_2 != 0))
+	if((num_1 != 0) && (num_2 != 0))
 	{
 		while(resto - num_2 >= 0)
 		{
@@ -18,5 +18,7 @@ int main ()
 		printf("RESTO = %d\n", resto);
 	}
 	else
+	{
 	printf("Numero Invalido\n");
+	}
 }
