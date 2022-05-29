@@ -1,17 +1,22 @@
 #include <stdio.h>
 
-int main()
+int main ()
 {
-	int vet[3][3], i, j;
-	
-	printf("Informe os valores:\n");
-	
-	for(i = 0; i <= 2; i++)
-		for(j = 0; j <= 2; j++)
-		scanf("%d", &vet[i][j]);
+	int coluna, linha, x = 0;
+	int matriz[10][10];
 
-	for(i = 0; i <= 2; i++)
-		for(j = 0; j <= 2; j++)
-			printf("%d ", vet[i][j]);
+	for (coluna = 0 ; coluna < 10 ; coluna++)
+	{
+		for(linha = 0 ; linha < 10 ; linha++)
+		{
+			matriz[coluna][linha] = x++;
+			if(coluna == linha)
+			{
+				printf("%d ", matriz[coluna][linha]);
+			}
+		}	
+	printf("\n");
+	}
 	return 0;
 }
+
