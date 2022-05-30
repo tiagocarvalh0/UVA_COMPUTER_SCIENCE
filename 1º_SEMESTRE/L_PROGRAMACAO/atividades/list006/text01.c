@@ -2,7 +2,7 @@
 
 int main ()
 {
-	int coluna, linha, x = 0;
+	int coluna, linha, x = 100;
 	int matriz[10][10];
 
 	for (coluna = 0 ; coluna < 10 ; coluna++)
@@ -14,6 +14,8 @@ int main ()
 			{
 				printf("%d ", matriz[coluna][linha]);
 			}
+			else
+				printf(" - ");
 		}	
 	printf("\n");
 	}
