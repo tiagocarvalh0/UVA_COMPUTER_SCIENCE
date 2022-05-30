@@ -26,7 +26,7 @@ int main()
 		printf("\n");
 	}
 	
-	printf("================== Matriz 3 ==================\n");
+	printf("================== Matriz Soma ==================\n");
 	for(linha = 0; linha < 10; linha++)
 	{
 		for(coluna = 0; coluna < 10; coluna ++)
