@@ -10,8 +10,8 @@ int main()
 void sub_Fun(void)
 {
 	char vet_Mat[5][3];
-	int media_Idade = 0, media_Idade_1 = 0, cont = 0, cont_1 = 0, soma = 0, soma_1 = 0;
-	int maior_Idade ;
+	float media_Idade = 0, media_Idade_1 = 0, soma = 0, soma_1 = 0;
+	int maior_Idade, cont = 0, cont_1 = 0 ;
 	int vet_Idade[6],linha, coluna, j = 0;
 	
 	//Matriz CHAR para CARACTERISTICAS
@@ -49,6 +49,16 @@ void sub_Fun(void)
 	printf("=================================\n");
 	printf("\n");
 	
+	//Maior Idade
+	maior_Idade = vet_Idade[1];
+	for(linha = 1; linha < 6; linha++)
+		if(vet_Idade[linha] > maior_Idade)
+			maior_Idade = vet_Idade[linha];
+			
+	//Imprimindo MAIOR IDADE
+	printf("Maior Idade = %d\n", maior_Idade);
+	printf("\n");
+	
 	// Media de IDADE com pessoas (C)(P)
 	for(linha = 1; linha < 6; linha++)
 	{
@@ -61,13 +71,15 @@ void sub_Fun(void)
 	}
 	media_Idade = soma / cont;
 	
-	//Maior Idade
-	maior_Idade = vet_Idade[1];
-	for(linha = 1; linha < 6; linha++)
-		if(vet_Idade[linha] > maior_Idade)
-			maior_Idade = vet_Idade[linha];
-			
-	/*// Media de IDADE com pessoas (A)(L)
+	//Imprimindo SOMA e DIVISOR
+	printf("Soma = %.1f\n", soma);
+	printf("Valor do DIVISOR = %d\n", cont);
+	//Imprimindo media IDADE (C)(P)
+	printf("Media Idade (C)(P) = %.1f\n", media_Idade);
+	printf("\n");
+	
+	
+	// Media de IDADE com pessoas (A)(L)
 	for(linha = 1; linha < 6; linha++)
 	{
 		if((vet_Mat[linha][1] == 'f' || vet_Mat[linha][1] == 'F') && (vet_Mat[linha][2] == 'a' || vet_Mat[linha][2] == 'A') && (vet_Mat[linha][3] == 'l' || vet_Mat[linha][3] == 'L'))
@@ -80,26 +92,13 @@ void sub_Fun(void)
 			}
 		}
 	}
-	media_Idade_1 = soma_1 / cont_1;*/				
+	media_Idade_1 = soma_1 / cont_1;				
 	
 	//Imprimindo SOMA e DIVISOR
-	printf("Soma = %d\n", soma);
-	printf("Valor do DIVISOR = %d\n", cont);
-	printf("\n");
-	
-	//Imprimindo media IDADE (C)(P)
-	printf("Media Idade (C)(P) = %d\n", media_Idade);
-
-	//Imprimindo MAIOR IDADE
-	printf("Maior Idade = %d\n", maior_Idade);
-	printf("\n");
-	
-	//Imprimindo SOMA e DIVISOR
-	printf("Soma = %d\n", soma_1);
+	printf("Soma = %.1f\n", soma_1);
 	printf("Valor do DIVISOR = %d\n", cont_1);
-	printf("\n");
-	
 	//Imprimindo media IDADE (A)(L)
-	//printf("Media Idade (A)(L) = %d\n", media_Idade_1);
+	printf("Media Idade (A)(L) = %.1f\n", media_Idade_1);
+	printf("\n");
 
 }
