@@ -1,19 +1,56 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct 
 {
-	int cadastro_Contato ;
-	int localizar_Contato ;
-	int alterar_Contato ;
-	int apagar_Contato ;
-	int listar_Contato ;
-	int media_Idade ;
-} menu ;
+	char nome[30];
+	int telefone;
+	int idade;
 
-int main ()
+} t_agenda;
+
+int main()
 {
-	printf("ola\n");
+	int i = 0;
+	int num ;
+	t_agenda cadastro[10];
+	
+	while(num != 0)
+	{
+		printf("\n");
+		printf("======== MENU ========\n");
+		printf("(1) = Cadastrar contato.\n");
+		printf("(2) = Localizar contato.\n");
+		printf("(3) = Alterar contato.\n");
+		printf("(4) = Apagar contato.\n");
+		printf("(5) = Listar contatos.\n");
+		printf("(6) = Media de idade.\n");
+		printf("(0) = Sair.\n");
+		printf("Selecione: ");
+		scanf("%d", &num);
+		scanf("%c");
+		
+		if(i >= 2)
+			printf("Agenda lotada!!!\n");
+		else if(num == 1)
+		{
+			printf("Nome: ");
+			fgets(cadastro[i].nome, 30, stdin);
+			
+			printf("Idade: ");
+			scanf("%d",&cadastro[i].idade);
+			
+			printf("Telefone: ");
+			scanf("%d",&cadastro[i].telefone);
+			scanf("%c");
+			i++;	
+		}
+	}
+
+	printf("Nome = %s\n", cadastro[i].nome);
+	printf("Idade = %d\n", cadastro[i].idade);
+	printf("Telefone = %d\n", cadastro[i].telefone);
+
 
 	return 0;
 }
-

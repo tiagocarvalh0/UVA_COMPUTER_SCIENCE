@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1655056436 source:c:\users\user\documents\uva_computer_science\1º_semestre\l_programacao\estudo\struct\text01.c
+	<stdio.h>
+	<stdlib.h>
+
+1654990858 source:c:\users\user\documents\uva_computer_science\1º_semestre\l_programacao\estudo\struct\text02.c
+	<stdio.h>
+	<stdalign.h>
+	<string.h>
+
