@@ -6,6 +6,7 @@ typedef struct
 	char nome[30];
 	int telefone;
 	int idade;
+	int ocupado;
 
 } t_agenda;
 
@@ -13,7 +14,13 @@ int main()
 {
 	int i = 0;
 	int num ;
+	float media = 0.0;
+	
 	t_agenda cadastro[10];
+	
+	for(i = 0 ; i < 10; i++)
+		cadastro[i].ocupado = 0;
+	i = 0;
 	
 	while(num != 0)
 	{
@@ -28,12 +35,17 @@ int main()
 		printf("(0) = Sair.\n");
 		printf("Selecione: ");
 		scanf("%d", &num);
-		scanf("%c");
 		
-		if(i >= 2)
-			printf("Agenda lotada!!!\n");
-		else if(num == 1)
+		//ENCERRAR PROGRAMA
+		if(num == 0)
+			break;		
+		// CADASTRAR CONTATO
+		if(num == 1)
 		{
+			if(i >= 10)
+			printf("Agenda lotada!!!\n");
+			
+			else
 			printf("Nome: ");
 			fgets(cadastro[i].nome, 30, stdin);
 			
@@ -42,15 +54,42 @@ int main()
 			
 			printf("Telefone: ");
 			scanf("%d",&cadastro[i].telefone);
-			scanf("%c");
+			
+			
+			cadastro[i].ocupado = 1;
 			i++;	
 		}
+		
+		// LISTAR CONTATO
+		if(num == 5)
+		{
+			printf("\nMedia de idade:\n");
+			for(i = 0; i < 10; i++)
+			{
+				if(cadastro[i].ocupado == 1)
+					printf("(%d) = %s\n",i, cadastro[i].nome);
+			}
+		}
+		
+		// MEDIA IDADE
+		if(num == 6)
+		{
+			printf("\nLista de Contatos:\n");
+			for(i = 0; i < 10; i++)
+			{
+				if(cadastro[i].ocupado == 1)
+				{
+					media = media + cadastro[i].idade;
+				}
+			}
+			printf("Media de idade = %.1f\n", media);
+		}
+		
 	}
+	
 
-	printf("Nome = %s\n", cadastro[i].nome);
-	printf("Idade = %d\n", cadastro[i].idade);
-	printf("Telefone = %d\n", cadastro[i].telefone);
 
 
 	return 0;
+
 }
