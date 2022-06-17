@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-int n = 2, cont = 0, i = 0;
+int n = 4, cont = 0, i = 0;
 float salarioMedio = 0, mediaFilhos = 0, salarioMaior ;
+double cont1 = 0.0;
 
 typedef struct
 {
@@ -16,7 +17,7 @@ typedef struct
 // CADASTRO
 void cadastroPopulacao(t_cadastro cadastro[])
 {
-	while(cont != 2)
+	while(cont != n)
 	{
 		printf("\n");
 		printf("===== Cadastro %d =====\n", cont);
@@ -74,7 +75,20 @@ void mariorSalario(t_cadastro cadastro[])
 	}
 	printf("\n");
 	printf("Maior salario: R$ %.2f\n", salarioMaior);
+}
 
+// PERCENTUAL MULHERES
+void percentualMulheres(t_cadastro cadastro[])
+{
+	for(i = 0; i < n; i++)
+	{
+		if((cadastro[i].sexo[0] == 'f') && (cadastro[i].salario >= 1000))
+		{
+			cont1++;
+		}
+	}
+	printf("\n");
+	printf("%Porcentagen: %% %.2lf\n", cont1 / i);
 }
 
 int main()
@@ -89,6 +103,7 @@ int main()
 	
 	mariorSalario(cadastro);
 	
+	percentualMulheres(cadastro);
 	
-
+	return 0;
 }
