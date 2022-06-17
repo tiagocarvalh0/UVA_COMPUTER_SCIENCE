@@ -3,7 +3,7 @@
 #include <string.h>
 
 int num = 0, cont = 0;
-float salarioBrutoM = 0, salarioBrutoF = 0, descontoProfessor = 0, descontoProfessora;
+float salarioBrutoM = 0, salarioBrutoF = 0, descontoProfessor = 0, descontoProfessora = 0;
 
 typedef struct
 {
@@ -15,7 +15,7 @@ typedef struct
 // CADASTRO
 void cadastroProfessor(t_professor professor[])
 {
-	while(num != 2)
+	while(num != 10)
 	{
 		printf("\n");
 		printf("==== Professor(a) %d ====\n", num);
@@ -32,15 +32,13 @@ void cadastroProfessor(t_professor professor[])
 // MEDIA SALARIO BRUTO MASCULINO
 void mediaSalarioBrutoMasculino(t_professor professor[])
 {
-	for(num = 0; num < 2; num++)
+	for(num = 0; num < 10; num++)
 	{
 		if(professor[num].sexo[0] == 'm')
 		{
-			if(professor[num].horas <= 70)
-			{
-				salarioBrutoM += professor[num].horas;
-				cont++;
-		}	}
+			salarioBrutoM += professor[num].horas;
+			cont++;
+		}	
 	}
 	salarioBrutoM = (salarioBrutoM * 60.50) / cont;
 	printf("\n");
@@ -51,54 +49,64 @@ void mediaSalarioBrutoMasculino(t_professor professor[])
 void mediaSalarioBrutoFeminino(t_professor professor[])
 {
 	cont = 0;
-	for(num = 0; num < 2; num++)
+	for(num = 0; num < 10; num++)
 	{
-		if(professor[num].sexo[0] == 'f')
-		{
-			salarioBrutoF += professor[num].horas;
-			cont++;
-		}
+		salarioBrutoF += professor[num].horas;
+		cont++;
 	}
 	salarioBrutoF = (salarioBrutoF * 60.50) / cont;
 	printf("\n");
 	printf("Salario (B)Feminino: RS %.2f", salarioBrutoF);
 }
 
-// DESCONTO PROFESSOR
-void descontoProf(t_professor professor[])
+// LISTAGEM
+void listagem(t_professor professor[])
 {
-	for(num = 0; num < 2; num++)
+	for(num = 0; num < 10; num++)
 	{
-		if(professor[num].sexo == 'm')
+		printf("\n");
+		printf("==== Professor(a) %d ====\n", num);
+		printf("Codigo: %s\n", professor[num].codigo);
+		printf("Salario Bruto: %.2f\n", professor[num].horas * 60.50);
+		
+		if(professor[num].sexo[0] == 'm')
 		{
-			if(professor[num].horas >= 70)
+			if(professor[num].horas <= 70)
 			{
 				descontoProfessor = (professor[num].horas * 60.50) - ((professor[num].horas * 60.50) * 0.10) ;
 				printf("Desconto: %.2f\n", ((professor[num].horas * 60.50) * 0.10));
 				printf("Salario: %.2f\n", descontoProfessor);
-				break;
+			}
+			if(professor[num].horas > 70)
+			{
+				descontoProfessor = (professor[num].horas * 60.50) - ((professor[num].horas * 60.50) * 0.08);
+				printf("Desconto: %.2f\n", ((professor[num].horas * 60.50) * 0.08));
+				printf("Salario: %.2f\n", descontoProfessor);
 			}
 		}
-	}
-}
-
-// LISTAGEM
-void listagem(t_professor professor[])
-{
-	for(num = 0; num < 2; num++)
-	{
-		printf("==== Professor(a) %d ====\n", num);
-		printf("Codigo: %s\n", professor[num].codigo);
-		printf("Salario Bruto: %.2f\n", professor[num].horas * 60.50);
+		
+		if(professor[num].sexo[0] == 'f')
+		{
+			if(professor[num].horas <= 70)
+			{
+				descontoProfessora = (professor[num].horas * 60.50) - ((professor[num].horas * 60.50) * 0.07);
+				printf("Desconto: %.2f\n", ((professor[num].horas * 60.50) * 0.07));
+				printf("Salario: %.2f\n", descontoProfessora);
+			}
+			if(professor[num].horas > 70)
+			{
+				descontoProfessora = (professor[num].horas * 60.50) - ((professor[num].horas * 60.50) * 0.05);
+				printf("Desconto: %.2f\n", ((professor[num].horas * 60.50) * 0.05));
+				printf("Salario: %.2f\n", descontoProfessora);
+			}
+		}
 		printf("\n");
 	}
 }
 
 int main()
 {
-	t_professor professor[2];
-	
-	int num = 0;
+	t_professor professor[10];
 	
 	cadastroProfessor(professor);
 	
@@ -108,7 +116,5 @@ int main()
 	
 	mediaSalarioBrutoFeminino(professor);
 	
-	descontoProf(professor);
-
 	return 0;
 }
