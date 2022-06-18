@@ -3,6 +3,7 @@
 #include <string.h>
 
 int n = 2, i = 0, cont = 0, maiorAcidente, menorAcidente, valor = 0, totalVeiculos = 0;
+double valor1 = 0.0, total = 0.0;
 
 typedef struct
 {
@@ -72,10 +73,20 @@ void percentualVeiculos(t_formulario formulario[])
 	cont = 0;
 	while(cont != n)
 	{
-		totalVeiculos = totalVeiculos + formulario[cont].veiculos; 
+		totalVeiculos = totalVeiculos + formulario[cont].veiculos;
+		cont++; 
 	}
-	prinf("\n");
-	printf("%d\n", totalVeiculos);
+	
+	total = totalVeiculos;
+	cont = 0;
+	while(cont != n)
+	{
+		valor1 = formulario[cont].veiculos / total;
+		printf("\n");
+		printf("Estado: %s\n",formulario[cont].nome);
+		printf("Percentual: %% %.2lf\n", valor1);
+		cont++;
+	}
 }
 
 int main()
