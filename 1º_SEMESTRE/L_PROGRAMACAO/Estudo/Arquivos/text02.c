@@ -27,7 +27,7 @@ void cadastrarProduto()
 			break;
 		if(strcmp(produtonomeProduto, produto.nomeProduto) == 0)
 		{
-			printf("ERRO: NOMA INVALIDO!!!\n");
+			printf("ERRO: NOME INVALIDO!!!\n");
 			printf("Nome: ");
 			scanf(" %s", produtonomeProduto);
 		}
@@ -102,7 +102,7 @@ void vendaProduto()
 
 // ABASTECER ESTOQUE
 void abastecerEstoque()
-{
+/*{
 	int soma = 0;
 	int position = 0;
 	char ppr[20];
@@ -132,7 +132,84 @@ void abastecerEstoque()
 	}
 	fclose(arq);
 }
+*/
+{
+	int quantidade = 0;
+	int position = 0;
+	char produtonomeProduto[20];
+	FILE * arq = fopen("bodega.bin", "rb+");
+	t_produto produto;
+	
+	printf("Nome: ");
+	scanf(" %[^\n]", produtonomeProduto);
+	while(1)
+	{
+		fseek(arq, position * sizeof(t_produto), SEEK_SET);
+		fread(&produto, sizeof(t_produto), 1, arq);
+		if(feof(arq))
+			break;
+		if(strcmp(produtonomeProduto, produto.nomeProduto) == 0)
+		{
+			printf("Quantidade: ");
+			scanf("%d", &quantidade);
+			produto.quantProduto = produto.quantProduto + quantidade;
+			fseek(arq, position * sizeof(t_produto), SEEK_SET);
+			fwrite(&produto, sizeof(t_produto), 1, arq);
+				break;
+		}			
+		position++;	
+	}
+	fclose(arq);
+}
 
+// ATUALIZAR PRECO
+void atualizarPreco()
+{
+	int position = 0;
+	char produtonomeProduto[20];
+	FILE *arq = fopen("bodega.bin", "rb+");
+	t_produto produto;
+	
+	printf("Nome: ");
+	scanf(" %s", produtonomeProduto);
+	while(1)
+	{
+		fseek(arq, position * sizeof(t_produto), SEEK_SET);
+		fread(&produto, sizeof(t_produto), 1, arq);
+		if(feof(arq))
+			break;
+		if(strcmp(produtonomeProduto, produto.nomeProduto) == 0)
+		{
+			printf("Valor: R$ ");
+			scanf("%f", &produto.precoProduto);
+			fseek(arq, position * sizeof(t_produto), SEEK_SET);
+			fwrite(&produto, sizeof(t_produto), 1, arq);
+			break;
+		}
+		position++;
+	}
+	fclose(arq);
+}
+
+// LISTAR PRODUTOS
+void listarProdutos()
+{
+	FILE * arq = fopen("bodega.bin", "rb");
+	t_produto produto;
+	while(1)
+	{
+		fread(&produto, sizeof(t_produto), 1, arq);
+		if(feof(arq))
+			break;
+		if(produto.quantProduto < 10)
+		{
+			printf("Nome: %s\n", produto.nomeProduto);
+			printf("Quantidade: %d\n", produto.quantProduto);
+			printf("Compra: %d", 10 - produto.quantProduto);
+		}
+	}
+	fclose(arq);
+}
 int main()
 {
 	int num = -1;
@@ -157,6 +234,10 @@ int main()
 			vendaProduto();
 		if(num == 3)
 			abastecerEstoque();
+		if(num == 4)
+			atualizarPreco();
+		if(num == 5)
+			listarProdutos();
 		if(num == 6)
 			lerArquivo();
 			
