@@ -1,64 +1,32 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int main ()
+int main()
 {
-	int a, b, c, num_1, num_2, num_3 ;
+	int vetor[3], vetorcpy[3], aux, x, y, i;
 	
-	scanf("%d %d %d", &a, &b, &c);
+	for(i = 0; i < 3; i++)
+		scanf("%d", &vetor[i]);
+	for(i = 0; i < 3; i++)
+		vetorcpy[i] = vetor[i]; 
 	
-	if((a < b) && (a < c));
-	{
-		num_1 = a ;
-	}
-	if((b < a) && (b < c))	
-	{
-		num_1 = b ; 
-	}
-	if((c < a) && (c < b))
-	{
-		num_1 = c ;
-	}
+	for(x = 0; x < 3; x++)
+		for(y = 0; y < 3; y++)
+		{
+			if(vetor[x] < vetor[y])
+			{
+				aux = vetor[x];
+				vetor[x] = vetor[y];
+				vetor[y] = aux;
+			}
+		}
 	
-	if((a > b) && (a < c))
-	{
-		num_2 = a ;
-	}
-	if((b > a) && (b < c))
-	{
-		num_2 = b ;
-	}
-	if((c < a) && (c > b))
-	{
-		num_2 = c ;
-	}
-	
-	if((a > b) && (a > c));
-	{
-		num_3 = a ;
-	}
-	if((b > a) && (b > c))	
-	{
-		num_3 = b ; 
-	}
-	if((c > a) && (c > b))
-	{
-		num_3 = c ;
-	}
-	
-	printf("%i\n%i\n%i\n\n", num_1, num_2, num_3);
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	for(i = 0; i < 3; i++)
+		printf("%d\n", vetor[i]);
+	printf("\n");
+	for(i = 0; i < 3; i++)
+		printf("%d\n", vetorcpy[i]);
+
+	return 0;
 }
