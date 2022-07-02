@@ -5,7 +5,7 @@
 int main()
 {
 	int i ;
-	float vetor[3], maiorLado = vetor[0], menorLado = vetor[0], soma = 0, operacao;
+	float vetor[3], maiorLado = vetor[0], soma = 0, operacao;
 	
 	for(i = 0; i < 3; i++)
 		scanf("%f", &vetor[i]);
