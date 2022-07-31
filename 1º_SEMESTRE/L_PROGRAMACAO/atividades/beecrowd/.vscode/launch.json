@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": false,
+      "cwd": "c:/Users/User/Documents/UVA_COMPUTER_SCIENCE/1º_SEMESTRE/L_PROGRAMACAO/atividades/beecrowd",
+      "program": "c:/Users/User/Documents/UVA_COMPUTER_SCIENCE/1º_SEMESTRE/L_PROGRAMACAO/atividades/beecrowd/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

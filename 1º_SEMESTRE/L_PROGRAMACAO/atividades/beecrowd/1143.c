@@ -4,21 +4,14 @@
 
 int main()
 {
-	int num, x, y, cont = 0;
+	int num, linha, coluna;
 	
 	scanf("%d", &num);
 	
-	int matriz[num][3];
-	
-	for(x = 1; x < num + 1; x++)
+	for(linha = 1; linha < num + 1; linha++)
 	{
-		for(y = 0; y < 3; y++)
-		{
-			matriz[x][y] = x * x;
-			printf("%d ", matriz[x][y]);
-		}
-		printf("\n");
+		printf("%d %d %d\n", linha, linha * linha, linha * linha * linha);
 	}
-
+	
 	return 0;
 }
