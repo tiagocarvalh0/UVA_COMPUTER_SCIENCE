@@ -4,7 +4,7 @@
 
 int main()
 {
-	int num, i = 0, j = 1, x = 0, cont = 0;
+	int num, i = 0, j = 1, x = 0, cont = 1;
 	
 	scanf("%d", &num);
 	
@@ -12,17 +12,18 @@ int main()
 	{
 		if(num == 1)
 		{
-			printf("%d", i);
+			printf("%d\n", i);
 				break;
 		}
 		if(num == 2)
 		{
-			printf("%d %d", i, j);
+			printf("%d %d\n", i, j);
 				break;
 		}
 		
 		if(cont == num)
 		{
+			printf("%d\n", x);
 				break;
 		}
 		
