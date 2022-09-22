@@ -9,8 +9,11 @@ void paresPrimeiro(int vetor[], int tam)
     for(i = 0; i < tam; i++)
     {
         if(vetor[i] % 2 == 0)
-            aux = vetor[i];
-            
+        {
+            aux = vetor[j];
+            vetor[j++] = vetor[i];
+            vetor[i] = aux;   
+        }   
     }
 
 }
@@ -32,10 +35,10 @@ int main()
 
     paresPrimeiro(vetor, tam);
 
+    printf("\n");
+
     for(i = 0; i < tam; i++)
     {
-        if(vetor[i] % 2 != 0)
-            break;
         printf("(%d), ", vetor[i]);
     }
 
