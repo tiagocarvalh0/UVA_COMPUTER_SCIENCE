@@ -1,66 +1,51 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
+int converterTempo();
 
 int main()
 {
-	
-	int diaIni;
-	int horaIni;
-	int minIni;
-	int segIni;
-	
-	int diaFim;
-	int horaFim;
-	int minFim;
-	int segFim;
-	
-	int diaTotal;
-	int horaTotal;
-	int minTotal;
-	int segTotal;
-	
+	int vetor1[4], tempo, resto;
+	int vetor2[4];
+
 	printf("Dia ");
-	scanf("%d", &diaIni);
-	scanf("%d %d %d", &horaIni, &minIni, &segIni);
-	
+	scanf("%d", &vetor1[0]);
+	scanf("%d : %d : %d", &vetor1[1], &vetor1[2], &vetor1[3]);
 	printf("Dia ");
-	scanf("%d", &diaFim);
-	scanf("%d %d %d", &horaFim, &minFim, &segFim);
-	
-	diaTotal = diaFim - diaIni - 1;
-	horaTotal = horaFim - horaIni;
-	minTotal = minFim - minIni;
-	segTotal = segFim - segIni;
-	
-	if(horaTotal < 0)
-		horaTotal = 24 + horaTotal;
-	if(minTotal < 0)
-		minTotal = 60 + minTotal;
-	if(segTotal < 0)
-		segTotal = 60 + segTotal;
-		
-	if(horaTotal >= 24)
-	{
-		diaTotal++;
-		printf("%d", horaTotal);
-		horaTotal = horaTotal - 24;
-	}
-	if(minTotal >= 60)
-	{
-		horaTotal++;
-		minTotal = minTotal - 60;
-	}
-	if(segTotal >= 60)
-	{
-		minTotal++;
-		minTotal = minTotal - 60;
-	}
-					
-	printf("%d dia(s)\n", diaTotal);
-	printf("%d hora(s)\n", horaTotal);
-	printf("%d minuto(s)\n", minTotal);
-	printf("%d segundo(s)\n", segTotal);
-	
+	scanf("%d", &vetor2[0]);
+	scanf("%d : %d : %d", &vetor2[1], &vetor2[2], &vetor2[3]);
+
+	resto = converterTempo(vetor1, vetor2, tempo);
+
+	vetor1[0] = resto / 86400;
+	resto = resto - (vetor1[0] * 86400);
+	vetor1[1] = resto / 3600;
+	resto = resto - (vetor1[1] * 3600);
+	vetor1[2] = resto / 60;
+	resto = resto - (vetor1[2] * 60);
+	vetor1[3] = resto;
+
+	printf("%d dia(s)\n", vetor1[0]);
+	printf("%d hora(s)\n", vetor1[1]);
+	printf("%d minuto(s)\n", vetor1[2]);
+	printf("%d segundo(s)\n", vetor1[3]);
+
 	return 0;
+}
+
+int converterTempo(int vetor1[], int vetor2[], int tempo)
+{	
+	vetor1[0] *= 86400;
+	vetor1[1] *= 3600;
+	vetor1[2] *= 60;
+	
+	vetor2[0] *= 86400;
+	vetor2[1] *= 3600;
+	vetor2[2] *= 60;
+
+	int tempo1 = vetor1[0] + vetor1[1] + vetor1[2] + vetor1[3] ;
+	int tempo2 = vetor2[0] + vetor2[1] + vetor2[2] + vetor2[3] ;
+
+	tempo = tempo2 - tempo1;
+
+	return tempo;
 }
