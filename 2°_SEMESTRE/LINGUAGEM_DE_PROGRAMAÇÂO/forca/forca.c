@@ -2,86 +2,32 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "drawForca.h"
+#define TAM 10
 
-void forca();
-void erro01();
-void erro02();
-void erro03();
-void erro04();
-void erro05();
-void erro06();
 void sortearPalavra();
 
-const char vetorDePalavras[10][10] = {"exceto", "mister", "vereda", "casual", "idiota", "anseio", "gentil", "larica", "formal", "pressa"};
+const char vetorDePalavras[TAM][10] = {"exceto", "mister", "vereda", "casual", "idiota", "anseio", "gentil", "larica", "formal", "pressa"};
 
-int main()
-{
-    char palavra[10] = {"******"};
-    char cpyPalavra[10] = {"idiota"};
-    sortearPalavra(cpyPalavra);
+const char palavra[TAM];
 
+const char cpyPalavra[TAM] = {"******"};
 
-    printf("%s\n", palavra);
+char letra;
 
+int main() {
+    sortearPalavra(palavra);
+    for(int i = 0; i < 6; i++) {
+        scanf("%c", &letra);
+        for(int j = 0; i < 10; i++) {
+            printf("%d\n", palavra[j]);
+        }
+    } 
     return 0;
 }
 
-void forca()
-{
-    printf("_____\n");
-    printf("   |\n");
-}
-
-void erro01()
-{
-    forca();
-    printf("  (_)\n");
-}
-
-void erro02()
-{
-    forca();
-    printf("  (_) \n");
-    printf("   | \n");
-    printf("   | \n");
-}
-
-void erro03()
-{
-    forca();
-    printf("  (_) \n");
-    printf("  /| \n");
-    printf("   | \n");
-}
-
-void erro04()
-{
-    forca();
-    printf("  (_) \n");
-    printf("  /|\\ \n");
-    printf("   | \n");
-}
-
-void erro05()
-{
-    forca();
-    printf("  (_) \n");
-    printf("  /|\\ \n");
-    printf("   | \n");
-    printf("  / \n");
-}
-
-void erro06()
-{
-    forca();
-    printf("  (_) \n");
-    printf("  /|\\ \n");
-    printf("   | \n");
-    printf("  / \\ \n");
-}
-
-void sortearPalavra(char cpyPalavra[])
-{   
-    int i = 10 % rand();
-    printf("%d ", i);
+void sortearPalavra(char palavra[]) {   
+    srand(time(NULL));
+    strcpy(palavra, vetorDePalavras[(rand() % 11)]);
+    printf("%s\n%s\n", cpyPalavra, palavra);
 }
