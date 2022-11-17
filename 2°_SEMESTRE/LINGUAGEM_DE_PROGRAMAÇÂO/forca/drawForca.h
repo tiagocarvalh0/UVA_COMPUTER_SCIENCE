@@ -53,4 +53,5 @@ void erro06(){
     printf("  /|\\\n");
     printf("   |\n");
     printf("  / \\\n");
+    printf("!!!GAME OVER!!!\n");
 }
