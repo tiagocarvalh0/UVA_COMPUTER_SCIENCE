@@ -15,10 +15,9 @@ void imprimirForca();
 void declararVariaveis();
 int tratarLetra();
 
-    const typedef enum { HEAD = 1,  BODY, LEFT_ARM, RIGHT_ARM, LEFT_LEG, RIGHT_LEG} CORPO;
-    const char vetorDePalavras[TAM_VETOR][TAM_VETOR] = {"exceto", "mister", "vereda", "casual", "idiota", "anseio", "gentil", "larica", "formal", "pressa"};
-    typedef enum { LETRA_DUPLICADA = -2 } T_ERRO;
-    typedef enum { ACERTO = -1} T_ACERTO;  
+    const typedef enum { LETRA_DUPLICADA = -2 ,HEAD = 1,  BODY, LEFT_ARM, RIGHT_ARM, LEFT_LEG, RIGHT_LEG} T_ERRO;
+    const typedef enum { ACERTO = -1} T_ACERTO;    
+    const char vetorDePalavras[TAM_VETOR][TAM_VETOR] = {"exceto", "mister", "vereda", "casual", "idiota", "anseio", "gentil", "larica", "formal", "pressa"};  
     char palavraSorteada[TAM_VETOR];
     char CPY_palavraSorteada[TAM_VETOR] = {"______"};
     char letraInformada;
