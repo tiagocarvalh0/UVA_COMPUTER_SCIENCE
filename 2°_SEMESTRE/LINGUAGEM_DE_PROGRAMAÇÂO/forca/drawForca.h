@@ -1,45 +1,37 @@
 #include <stdio.h>
 
-void forca();
-void erro01();
-void erro02();
-void erro03();
-void erro04();
-void erro05();
-void erro06();
-
 void forca(){
     printf("_____\n");
     printf("   |\n");
 }
 
-void erro01(){
+void erroHEAD(){
     forca();
     printf("  (_)\n");
 }
 
-void erro02(){
+void erroBODY(){
     forca();
     printf("  (_)\n");
     printf("   |\n");
     printf("   |\n");
 }
 
-void erro03(){
+void erroLEFT_ARM(){
     forca();
     printf("  (_)\n");
     printf("  /|\n");
     printf("   |\n");
 }
 
-void erro04(){
+void erroRIGHT_ARM(){
     forca();
     printf("  (_)\n");
     printf("  /|\\\n");
     printf("   |\n");
 }
 
-void erro05(){
+void erroLEFT_LEG(){
     forca();
     printf("  (_)\n");
     printf("  /|\\\n");
@@ -47,11 +39,16 @@ void erro05(){
     printf("  / \n");
 }
 
-void erro06(){
+void erroRIGHT_LEG(){
     forca();
     printf("  (_)\n");
     printf("  /|\\\n");
     printf("   |\n");
     printf("  / \\\n");
     printf("!!!GAME OVER!!!\n");
+}
+
+void limparTerminal() {
+    system("clear");
+    forca();
 }
