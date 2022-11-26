@@ -15,12 +15,13 @@ int tratarLetra();
 void excluirLetra();
 void cpyLetraNaVariavelPalavraAUX();
 void imprimirForca();
+void limparBuffer();
 
     const typedef enum { LETRA_DUPLICADA = -2 , NO_ERROR = 0, HEAD = 1,  BODY, LEFT_ARM, RIGHT_ARM, LEFT_LEG, RIGHT_LEG, GAME_OVER = 6} T_ERRO;
     const typedef enum { ACERTO = -1} T_ACERTO;    
     const char vetorDePalavras[TAM_VETOR][TAM_VETOR] = {"exceto", "mister", "vereda", "casual", "idiota", "anseio", "gentil", "larica", "formal", "pressa"};
     
-    char alfabeto[TAM_ALFABETO]={"a-b-c-d-e-f-g-h-i-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z"};  
+    char alfabeto[TAM_ALFABETO]={"a b c d e f g h i j k l m n o p q r s t u v w x y z"};  
     char palavraSorteada[TAM_VETOR];
     char palavraAUX[TAM_VETOR] = {"______"};
     char letraInformada;
@@ -37,7 +38,7 @@ int main() {
 // SORTEIA A PALAVRA PARA ADIVINHAR
 void sortearPalavra() {   
     srand(time(NULL));
-    strcpy(palavraSorteada, vetorDePalavras[(rand() % 11)]);
+    strcpy(palavraSorteada, vetorDePalavras[(rand() % 10)]);
 }
 
 // MENU PRINCIPAL 
@@ -46,7 +47,7 @@ void telaMenu() {
         confeirVitoria();
         perguntarLetra();
         tratarLetra();
-        imprimirForca();    
+        imprimirForca();
     }   
 }
 
@@ -60,15 +61,19 @@ void confeirVitoria() {
 
 void perguntarLetra() {
     //printf("%s\n", palavraSorteada);
-    printf("\nPALAVRA: %s\n", palavraAUX);
+    printf("\033[9;1HPALAVRA: %s\n", palavraAUX);
     printf("TENTATIVAS: %02d\n", contTentativas);
-    printf("ALFABETO: %s\n", alfabeto);
+    printf("ALFABETO: %s\n", alfabeto);  
     printf("LETRA: ");
     scanf("%c", &letraInformada);
-    scanf("%*c");
-    setbuf(stdin, 0);
+    limparBuffer();
     system("clear");
     contTentativas++;
+}
+
+void limparBuffer() {
+    char c;
+    while((c = getchar()) !='\n' && c != EOF);
 }
 
 int tratarLetra() {

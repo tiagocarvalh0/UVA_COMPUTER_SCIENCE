@@ -1,8 +1,17 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
-int main () {
-    printf("\u256d\u256e\n\u2570\u2530\u256f\n");
-    printf(" \u2502\n \u2502\n");
+int main()
+{
+    char buffer[BUFSIZ];
+
+    /* setup the buffer */
+    setbuf(stdout,buffer);
+
+    puts("Hold it!");
+    puts("Hold it!");
+    puts("Go!");
+    getchar();
+    puts("Thank you.");
+
+    return(0);
 }
