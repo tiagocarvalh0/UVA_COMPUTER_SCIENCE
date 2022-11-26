@@ -9,15 +9,18 @@
 void sortearPalavra();
 void telaMenu();
 void perguntarLetra();
-void passarLetra();
+void ();
+void cpyLetraNaVariavelAux();
 void confeirVitoria();
 void imprimirForca();
 void declararVariaveis();
 int tratarLetra();
 
-    const typedef enum { LETRA_DUPLICADA = -2 ,HEAD = 1,  BODY, LEFT_ARM, RIGHT_ARM, LEFT_LEG, RIGHT_LEG} T_ERRO;
+    const typedef enum { LETRA_DUPLICADA = -2 ,HEAD = 1,  BODY, LEFT_ARM, RIGHT_ARM, LEFT_LEG, RIGHT_LEG, GAME_OVER = 6} T_ERRO;
     const typedef enum { ACERTO = -1} T_ACERTO;    
-    const char vetorDePalavras[TAM_VETOR][TAM_VETOR] = {"exceto", "mister", "vereda", "casual", "idiota", "anseio", "gentil", "larica", "formal", "pressa"};  
+    const char vetorDePalavras[TAM_VETOR][TAM_VETOR] = {"exceto", "mister", "vereda", "casual", "idiota", "anseio", "gentil", "larica", "formal", "pressa"};
+    
+    char alfabeto[55]={"A-B-C-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z"};  
     char palavraSorteada[TAM_VETOR];
     char CPY_palavraSorteada[TAM_VETOR] = {"______"};
     char letraInformada;
@@ -37,7 +40,7 @@ void sortearPalavra() {
 }
 
 void telaMenu() {
-    while(erro < 6) {
+    while(erro != GAME_OVER) {
         confeirVitoria();
         perguntarLetra();
         tratarLetra();
@@ -58,30 +61,36 @@ void perguntarLetra() {
     printf("TENTATIVAS: %02d\nLETRA: ", contTentativas);
     scanf("%c", &letraInformada);
     scanf("%*c");
+    setbuf(stdin, NULL);
     system("clear");
     contTentativas++;
 }
 
 int tratarLetra() {
-    for(int j = 0; j < TAM_VETOR; j++) {
+    excluirLetra();
+    for(int i = 0; i < TAM_VETOR; i++) {
         letraInformada = tolower(letraInformada);
-        if(CPY_palavraSorteada[j] == letraInformada) {
+        if(CPY_palavraSorteada[i] == letraInformada) {
             printf("LETRA JA INFORMADA!!!\n");
             contTentativas--;
                 return LETRA_DUPLICADA;
         }
-        else if(palavraSorteada[j] == letraInformada) {
-            passarLetra();
+        else if(palavraSorteada[i] == letraInformada) {
+            cpyLetraNaVariavelAux();
                 return ACERTO;
         }
     }
        return erro++;
 }
 
-void passarLetra() {
-    for(int j = 0; j < TAM_VETOR; j++)
-        if(palavraSorteada[j] == letraInformada)
-            CPY_palavraSorteada[j] = letraInformada;
+void excluirLetra() {
+    
+}
+
+void cpyLetraNaVariavelAux() {
+    for(int i = 0; i < TAM_VETOR; i++)
+        if(palavraSorteada[i] == letraInformada)
+            CPY_palavraSorteada[i] = letraInformada;
 }
 
 void imprimirForca() {

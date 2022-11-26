@@ -59,7 +59,6 @@ typedef struct
 	int horario_aposta;
 	int ganhador_aposta;
 	int valido;
-	
 }t_cadastro;
 
 // CADASTRAR APOSTA
