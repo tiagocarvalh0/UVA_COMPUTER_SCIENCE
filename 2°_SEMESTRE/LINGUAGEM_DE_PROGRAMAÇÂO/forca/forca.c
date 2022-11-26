@@ -5,24 +5,24 @@
 #include <ctype.h>
 #include "drawForca.h"
 #define TAM_VETOR 10
+#define TAM_ALFABETO 55
 
 void sortearPalavra();
 void telaMenu();
-void perguntarLetra();
-void ();
-void cpyLetraNaVariavelAux();
 void confeirVitoria();
-void imprimirForca();
-void declararVariaveis();
+void perguntarLetra();
 int tratarLetra();
+void excluirLetra();
+void cpyLetraNaVariavelPalavraAUX();
+void imprimirForca();
 
-    const typedef enum { LETRA_DUPLICADA = -2 ,HEAD = 1,  BODY, LEFT_ARM, RIGHT_ARM, LEFT_LEG, RIGHT_LEG, GAME_OVER = 6} T_ERRO;
+    const typedef enum { LETRA_DUPLICADA = -2 , NO_ERROR = 0, HEAD = 1,  BODY, LEFT_ARM, RIGHT_ARM, LEFT_LEG, RIGHT_LEG, GAME_OVER = 6} T_ERRO;
     const typedef enum { ACERTO = -1} T_ACERTO;    
     const char vetorDePalavras[TAM_VETOR][TAM_VETOR] = {"exceto", "mister", "vereda", "casual", "idiota", "anseio", "gentil", "larica", "formal", "pressa"};
     
-    char alfabeto[55]={"A-B-C-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z"};  
+    char alfabeto[TAM_ALFABETO]={"a-b-c-d-e-f-g-h-i-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z"};  
     char palavraSorteada[TAM_VETOR];
-    char CPY_palavraSorteada[TAM_VETOR] = {"______"};
+    char palavraAUX[TAM_VETOR] = {"______"};
     char letraInformada;
     int contTentativas = 0;
     int erro = 0;
@@ -34,11 +34,13 @@ int main() {
     return 0;
 }
 
+// SORTEIA A PALAVRA PARA ADIVINHAR
 void sortearPalavra() {   
     srand(time(NULL));
     strcpy(palavraSorteada, vetorDePalavras[(rand() % 11)]);
 }
 
+// MENU PRINCIPAL 
 void telaMenu() {
     while(erro != GAME_OVER) {
         confeirVitoria();
@@ -48,8 +50,9 @@ void telaMenu() {
     }   
 }
 
+// VERIFICA SE A PALAVRA SORTEADA E AUX SÂO IGUAIS 
 void confeirVitoria() {
-    if(strcmp(palavraSorteada, CPY_palavraSorteada) == 0) {
+    if(strcmp(palavraSorteada, palavraAUX) == 0) {
         printf("\n!!! YOU WIN !!!\nPALAVRA: %s\nTENTATIVAS: %02d\n\n", palavraSorteada, contTentativas);
         exit(1);
     }
@@ -57,11 +60,13 @@ void confeirVitoria() {
 
 void perguntarLetra() {
     //printf("%s\n", palavraSorteada);
-    printf("\nPALAVRA: %s\n", CPY_palavraSorteada);
-    printf("TENTATIVAS: %02d\nLETRA: ", contTentativas);
+    printf("\nPALAVRA: %s\n", palavraAUX);
+    printf("TENTATIVAS: %02d\n", contTentativas);
+    printf("ALFABETO: %s\n", alfabeto);
+    printf("LETRA: ");
     scanf("%c", &letraInformada);
     scanf("%*c");
-    setbuf(stdin, NULL);
+    setbuf(stdin, 0);
     system("clear");
     contTentativas++;
 }
@@ -70,13 +75,13 @@ int tratarLetra() {
     excluirLetra();
     for(int i = 0; i < TAM_VETOR; i++) {
         letraInformada = tolower(letraInformada);
-        if(CPY_palavraSorteada[i] == letraInformada) {
+        if(palavraAUX[i] == letraInformada) {
             printf("LETRA JA INFORMADA!!!\n");
             contTentativas--;
                 return LETRA_DUPLICADA;
         }
         else if(palavraSorteada[i] == letraInformada) {
-            cpyLetraNaVariavelAux();
+            cpyLetraNaVariavelPalavraAUX();
                 return ACERTO;
         }
     }
@@ -84,16 +89,20 @@ int tratarLetra() {
 }
 
 void excluirLetra() {
-    
+    for(int i = 0; i < TAM_ALFABETO; i++)
+        if(alfabeto[i] == letraInformada)
+            alfabeto[i] = '*';
 }
 
-void cpyLetraNaVariavelAux() {
+void cpyLetraNaVariavelPalavraAUX() {
     for(int i = 0; i < TAM_VETOR; i++)
         if(palavraSorteada[i] == letraInformada)
-            CPY_palavraSorteada[i] = letraInformada;
+            palavraAUX[i] = letraInformada;
 }
 
 void imprimirForca() {
+    if(erro == NO_ERROR)
+        forca();
     if(erro == HEAD)
         erroHEAD();
     if(erro == BODY)
@@ -104,6 +113,8 @@ void imprimirForca() {
         erroRIGHT_ARM();
     if(erro == LEFT_LEG)
         erroLEFT_LEG();
-    if(erro == RIGHT_LEG)
+    if(erro == RIGHT_LEG) {
         erroRIGHT_LEG();
+        printf("PALAVRA: %s\n", palavraSorteada);
+    }
 }
