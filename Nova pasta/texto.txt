@@ -1,0 +1,8 @@
+================
+BILHETE: 2
+DATA: 25/7/2022
+HORARIO: 20:35
+LOCAL: RJ
+Valor: R$ 1.00
+ANIMAL: 1
+================
