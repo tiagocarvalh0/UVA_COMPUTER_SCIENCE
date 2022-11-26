@@ -12,7 +12,7 @@ void telaMenu();
 void confeirVitoria();
 void perguntarLetra();
 int tratarLetra();
-void excluirLetra();
+void excluirLetraDoAlfabeto();
 void cpyLetraNaVariavelPalavraAUX();
 void imprimirForca();
 void limparBuffer();
@@ -35,7 +35,7 @@ int main() {
     return 0;
 }
 
-// SORTEIA A PALAVRA PARA ADIVINHAR
+// SELECIONAR UMA PALAVRA DO VETOR DE PALAVRAS
 void sortearPalavra() {   
     srand(time(NULL));
     strcpy(palavraSorteada, vetorDePalavras[(rand() % 10)]);
@@ -59,8 +59,8 @@ void confeirVitoria() {
     }
 }
 
+// USUARIO INFORMA A LETRA
 void perguntarLetra() {
-    //printf("%s\n", palavraSorteada);
     printf("\033[9;1HPALAVRA: %s\n", palavraAUX);
     printf("TENTATIVAS: %02d\n", contTentativas);
     printf("ALFABETO: %s\n", alfabeto);  
@@ -71,13 +71,15 @@ void perguntarLetra() {
     contTentativas++;
 }
 
+// LIMPAR BUFFER DO TECLADO
 void limparBuffer() {
     char c;
     while((c = getchar()) !='\n' && c != EOF);
 }
 
+// TRATAR ERRO OU ACERTO DA LETRA INFORMADA
 int tratarLetra() {
-    excluirLetra();
+    excluirLetraDoAlfabeto();
     for(int i = 0; i < TAM_VETOR; i++) {
         letraInformada = tolower(letraInformada);
         if(palavraAUX[i] == letraInformada) {
@@ -93,18 +95,21 @@ int tratarLetra() {
        return erro++;
 }
 
-void excluirLetra() {
+// APAGAR LETRA JA INFORMADA PELO USUARIO
+void excluirLetraDoAlfabeto() {
     for(int i = 0; i < TAM_ALFABETO; i++)
         if(alfabeto[i] == letraInformada)
-            alfabeto[i] = '*';
+            alfabeto[i] = ' ';
 }
 
+// SUBSTITUIR "_" PELA LETRA INFORMADA
 void cpyLetraNaVariavelPalavraAUX() {
     for(int i = 0; i < TAM_VETOR; i++)
         if(palavraSorteada[i] == letraInformada)
             palavraAUX[i] = letraInformada;
 }
 
+// DESENHO DA FORCA  
 void imprimirForca() {
     if(erro == NO_ERROR)
         forca();
