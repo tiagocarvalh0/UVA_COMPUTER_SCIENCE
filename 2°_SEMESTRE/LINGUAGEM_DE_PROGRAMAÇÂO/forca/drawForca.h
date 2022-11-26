@@ -34,7 +34,7 @@ void erroLEFT_LEG(){
 void erroRIGHT_LEG(){
     erroRIGHT_ARM();
     printf("   \u2571 \u2572\n");
-    printf("!!! GAME OVER !!!\n");
+    printf("\033[9;1H!!! GAME OVER !!!\n");
 }
 
 void limparTerminal() {

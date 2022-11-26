@@ -54,7 +54,7 @@ void telaMenu() {
 // VERIFICA SE A PALAVRA SORTEADA E AUX SÂO IGUAIS 
 void confeirVitoria() {
     if(strcmp(palavraSorteada, palavraAUX) == 0) {
-        printf("\n!!! YOU WIN !!!\nPALAVRA: %s\nTENTATIVAS: %02d\n\n", palavraSorteada, contTentativas);
+        printf("\033[9;1H!!! YOU WIN !!!\nPALAVRA: %s\nTENTATIVAS: %02d\n\n", palavraSorteada, contTentativas);
         exit(1);
     }
 }
