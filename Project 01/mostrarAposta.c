@@ -3,14 +3,14 @@
 
 int main() {
     system("cls");
-    historicoAposta = fopen("HISTORICO_APOSTA.lib", "ab+");
+    arqHistoricoAposta = fopen("HISTORICO_APOSTA.lib", "ab+");
 
-    if(historicoAposta == NULL)
+    if(arqHistoricoAposta == NULL)
         printf("ERRO: HISTORICO\n");
     else {
     	
-        while(!feof(historicoAposta)) {
-			fread(&cadastro, sizeof(t_cadastro), 1, historicoAposta);
+        while(!feof(arqHistoricoAposta)) {
+			fread(&cadastro, sizeof(t_cadastro), 1, arqHistoricoAposta);
             if(cadastro.valido == 0) {
                 printf("================\n");
                 printf("BILHETE: %04d\n", cadastro.numBilhete1);
@@ -26,6 +26,7 @@ int main() {
             }
         }
     }
-    fclose(historicoAposta);
+    fclose(arqHistoricoAposta);
+    system("LISTA.xlsx");
     system("pause");
 }

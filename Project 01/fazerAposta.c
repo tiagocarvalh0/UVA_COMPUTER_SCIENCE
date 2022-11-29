@@ -8,7 +8,8 @@
 void fazerAposta();
 void dataAtual();
 void escolherHorarioDaAposta();
-void salvarArquivo();
+void salvarArquivoAtual();
+void salvarArquivoNoHistorico();
 
     const char barra[20] = {"================"};
 
@@ -32,22 +33,23 @@ void dataAtual() {
 }
 
 void fazerAposta() {
-    apostaAtual = fopen("APOSTA_RECENTE.txt", "w");
-    historicoAposta = fopen("HISTORICO_APOSTA.lib", "ab");
-    numeroBilhete = fopen("NUMERO_BILHETE.lib", "ab+");
+    arqApostaAtual = fopen("APOSTA_RECENTE.txt", "w");
+    arqHistoricoAposta = fopen("HISTORICO_APOSTA.lib", "ab");
+    arqHistoricoApostaTXT = fopen("HISTORICO_APOSTA_EXCEL.txt", "a");
+    arqNumeroBilhete = fopen("NUMERO_BILHETE.lib", "ab+");
 
-    if((apostaAtual == NULL) || (historicoAposta == NULL) || (numeroBilhete == NULL)) {
+    if((arqApostaAtual == NULL) || (arqHistoricoAposta == NULL) || (arqNumeroBilhete == NULL)) {
         printf("ERRO ARQ N CRIADO!\n");
     }
     else {
         while(1) {
-            if(feof(numeroBilhete))
+            if(feof(arqNumeroBilhete))
                 break;
             //fseek(numeroBilhete, 0, SEEK_CUR);
-            fread(&numBilhete, sizeof(int), 1, numeroBilhete);
+            fread(&numBilhete, sizeof(int), 1, arqNumeroBilhete);
         }
         numBilhete++;
-        fwrite(&numBilhete, sizeof(int), 1, numeroBilhete);
+        fwrite(&numBilhete, sizeof(int), 1, arqNumeroBilhete);
 
         cadastro.numBilhete1 = numBilhete;
         cadastro.diaAposta1 = dia_aposta;
@@ -79,12 +81,14 @@ void fazerAposta() {
         cadastro.valido = 0;
         cadastro.ganhadorAposta = 0;
 
-        fwrite(&cadastro, sizeof(t_cadastro), 1, historicoAposta);
-        salvarArquivo();
+        fwrite(&cadastro, sizeof(t_cadastro), 1, arqHistoricoAposta);
+        salvarArquivoAtual();
+        salvarArquivoNoHistorico();
         printf("APOSTA FEITA\n");
-        fclose(apostaAtual);
-        fclose(historicoAposta);
-        fclose(numeroBilhete);
+        fclose(arqApostaAtual);
+        fclose(arqHistoricoAposta);
+        fclose(arqHistoricoApostaTXT);
+        fclose(arqNumeroBilhete);
         system("APOSTA_RECENTE.txt");
     }
 } 
@@ -96,17 +100,36 @@ void escolherHorarioDaAposta() {
         turnoApostaCE();
 }
 
-void salvarArquivo() {
-    fprintf(apostaAtual, "%s\n", barra);
-    fprintf(apostaAtual, "BILHETE: %04d\n", cadastro.numBilhete1);
-    fprintf(apostaAtual, "DATA: %02d/%02d/%02d\n", cadastro.diaAposta1, cadastro.mesAposta1, cadastro.anoAposta1);
-    fprintf(apostaAtual, "EMITIDO: %02d:%02d\n", cadastro.horaAposta1, cadastro.minAposta1);
-    fprintf(apostaAtual, "LOCAL: %s\n", local[cadastro.localAposta - 1]);
+void salvarArquivoAtual() {
+    fprintf(arqApostaAtual, "%s\n", barra);
+    fprintf(arqApostaAtual, "BILHETE: %04d\n", cadastro.numBilhete1);
+    fprintf(arqApostaAtual, "DATA: %02d/%02d/%02d\n", cadastro.diaAposta1, cadastro.mesAposta1, cadastro.anoAposta1);
+    fprintf(arqApostaAtual, "EMITIDO: %02d:%02d\n", cadastro.horaAposta1, cadastro.minAposta1);
+    fprintf(arqApostaAtual, "LOCAL: %s\n", local[cadastro.localAposta - 1]);
     if(cadastro.localAposta == 1)
-        fprintf(apostaAtual, "HORARIO: %s\n", horarioLocalRJ[cadastro.horarioAposta - 1]);
+        fprintf(arqApostaAtual, "HORARIO: %s\n", horarioLocalRJ[cadastro.horarioAposta - 1]);
     else    
-        fprintf(apostaAtual, "HORARIO: %s\n", horarioLocalCE[cadastro.horarioAposta - 1]);
-    fprintf(apostaAtual, "VALOR:R$ %.02f\n", cadastro.valorAposta);
-    fprintf(apostaAtual, "ANIMAL: %s\n", animal[cadastro.animalAposta - 1]);
-    fprintf(apostaAtual, "%s\n", barra);
+        fprintf(arqApostaAtual, "HORARIO: %s\n", horarioLocalCE[cadastro.horarioAposta - 1]);
+    fprintf(arqApostaAtual, "VALOR:R$ %.02f\n", cadastro.valorAposta);
+    fprintf(arqApostaAtual, "ANIMAL: %s\n", animal[cadastro.animalAposta - 1]);
+    fprintf(arqApostaAtual, "%s\n", barra);
+}
+
+void salvarArquivoNoHistorico() {
+    /*fprintf(arqHistoricoApostaTXT, "%d, %02d/%02d/%02d, %02d:%02d, %s, ", cadastro.numBilhete1, cadastro.diaAposta1, cadastro.mesAposta1, cadastro.anoAposta1, );
+    if(cadastro.localAposta == 1)
+        fprintf(arqApostaAtual, "%s,", horarioLocalRJ[cadastro.horarioAposta - 1]);
+    else    
+        fprintf(arqApostaAtual, "%s,", horarioLocalCE[cadastro.horarioAposta - 1]);
+    fprintf(arqHistoricoApostaTXT, "R$ %.02f, %s\n")*/
+    fprintf(arqHistoricoApostaTXT, "%04d,", cadastro.numBilhete1);
+    fprintf(arqHistoricoApostaTXT,"%02d/%02d/%02d,", cadastro.diaAposta1, cadastro.mesAposta1, cadastro.anoAposta1);
+    fprintf(arqHistoricoApostaTXT, "%02d:%02d,", cadastro.horaAposta1, cadastro.minAposta1);
+    fprintf(arqHistoricoApostaTXT, "%s,", local[cadastro.localAposta - 1]);
+    if(cadastro.localAposta == 1)
+        fprintf(arqHistoricoApostaTXT, "%s,", horarioLocalRJ[cadastro.horarioAposta - 1]);
+    else    
+        fprintf(arqHistoricoApostaTXT, "%s,", horarioLocalCE[cadastro.horarioAposta - 1]);
+    fprintf(arqHistoricoApostaTXT, "R$ %.02f,", cadastro.valorAposta);
+    fprintf(arqHistoricoApostaTXT, "%s\n", animal[cadastro.animalAposta - 1]);
 }
