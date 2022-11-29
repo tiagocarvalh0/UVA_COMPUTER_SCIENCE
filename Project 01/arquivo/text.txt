@@ -1,0 +1,9 @@
+================
+BILHETE: 0017
+DATA: 27/11/22
+EMITIDO: 19:05
+LOCAL: RJ
+HORARIO: 11:00
+VALOR:R$ 1.00
+ANIMAL: BORBOLETA
+================
