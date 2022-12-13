@@ -1,7 +1,7 @@
 #define TRUE 1
 #define FALSE 0
 
-    const typedef enum {TAM_BIN = 3, TAM_OCTA = 9, TAM_DECI = 11, TAM_HEXA = 16, TAM_COMANDOS = 6, QNT_COMANDOS = 7};
+    const typedef enum {TAM_BIN = 3, TAM_OCTA = 9, TAM_DECI = 11, TAM_HEXA = 16, TAM_COMANDOS = 6, QNT_COMANDOS = 7}T_TAM_TABELA_CARACTERES;
 
     const char tabelaCaracteresBinario[TAM_BIN] = {"01"};
     const char tabelaCaracteresOctal[TAM_OCTA]= {"01234567"};
