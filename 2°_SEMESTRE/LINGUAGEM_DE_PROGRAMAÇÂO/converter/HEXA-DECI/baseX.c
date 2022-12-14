@@ -14,9 +14,12 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-void executar(int argc, char argv[]) {
-    if(checarQntParametro(argc))
-        tratarOpcao(argc, argv);
-    else    
-        mensagemErroQntParametro();
+void executar(int argc, char *argv[]) {
+
+    converterNumerosBaseDecimal(argc, argv);
+    mostraNumeros(argc, argv);
+    converterDeciBin(numBaseConversao);
+    converterDeciOcta(numBaseConversao);
+    converterDeciHexa(numBaseConversao);
+
 }
