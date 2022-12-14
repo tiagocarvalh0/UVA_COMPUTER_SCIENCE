@@ -79,6 +79,7 @@ int main(void) {
     int len = strlen(binary);
 
     for (i = 0; binary[i] != '\0'; i++) {
+        if (binary[i] >= '0' && binary[i] <= '1') {
         decimal += (binary[i] - 48) * pow(2, len - i - 1);
     }
 
@@ -104,6 +105,7 @@ int main(void) {
     int len = strlen(octal);
 
     for (i = 0; octal[i] != '\0'; i++) {
+        if (octal[i] >= '0' && octal[i] <= '8') {
         decimal += (octal[i] - 48) * pow(8, len - i - 1);
     }
 
