@@ -5,6 +5,7 @@
 #include "bibliotecaFuncoes.h"
 
 void executar();
+void mostraNumeros();
 
 int main(int argc, char *argv[]) {
 
@@ -15,11 +16,30 @@ int main(int argc, char *argv[]) {
 }
 
 void executar(int argc, char *argv[]) {
-
+    
     converterNumerosBaseDecimal(argc, argv);
-    mostraNumeros(argc, argv);
-    converterDeciBin(numBaseConversao);
-    converterDeciOcta(numBaseConversao);
-    converterDeciHexa(numBaseConversao);
+    //if(!tratarErro)
+        mostraNumeros(argc, argv, numBaseConversao);
+}
 
+void mostraNumeros(int argc, char *argv[], int numBaseConversao) {
+    if(argc > 6)
+        argc = 6;
+    for(int i = 3; i < argc; i++) {
+        if(strcmp(argv[i], comandosValidos[4]) == 0) {
+            converterDeciBin(numBaseConversao);
+            converterDeciOcta(numBaseConversao);
+            printf("DECIMAL: %d\n", numBaseConversao);
+            converterDeciHexa(numBaseConversao);
+            break;
+       }
+        if(strcmp(argv[i], comandosValidos[0]) == 0)
+            converterDeciBin(numBaseConversao);
+        if(strcmp(argv[i], comandosValidos[1]) == 0)
+            converterDeciOcta(numBaseConversao);
+        if(strcmp(argv[i], comandosValidos[2]) == 0) 
+            printf("DECIMAL: %d\n", numBaseConversao);
+        if(strcmp(argv[i], comandosValidos[3]) == 0)
+            converterDeciHexa(numBaseConversao);
+    }
 }

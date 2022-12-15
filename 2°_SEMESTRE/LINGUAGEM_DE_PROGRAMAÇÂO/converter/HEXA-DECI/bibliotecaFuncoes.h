@@ -12,7 +12,7 @@ int checarQntParametro();
 int tratarOpcao();
 int tratarErro();
 
-void converterNumeros();
+void converterNumerosBaseDecimal();
 int converterBinDeci();
 int converterOctaDeci();
 int converterDeciDeci();
@@ -57,7 +57,7 @@ int tratarErro(int argc, char *argv[]) {
     else return TRUE;
 }
 
-void converterNumeros(int argc, char *argv[]) {
+void converterNumerosBaseDecimal(int argc, char *argv[]) {
     if(strcmp(argv[BASE_NUMERO_INFORMADO], comandosValidos[0]) == 0) 
         numBaseConversao = converterBinDeci(argc, argv);
     if(strcmp(argv[BASE_NUMERO_INFORMADO], comandosValidos[1]) == 0) 
@@ -131,10 +131,6 @@ int converterDeciDeci(int argc, char *argv[]) {
     } 
 }
 
-void mostraNumeros(argc, argv) {
-
-}
-
 int converterHexaDeci(int argc, char *argv[]) {
     int decimal = 0;
     strcpy(hex, argv[1]);
@@ -165,8 +161,7 @@ int converterHexaDeci(int argc, char *argv[]) {
 void converterDeciBin(int numBaseConversao) {
     int binaryNum[32];
     int i = 0;
-    
-    if(numBaseConversao) {
+    if(numBaseConversao > 0) {
         while (numBaseConversao != 0) {
             binaryNum[i] = numBaseConversao % 2;
             numBaseConversao = numBaseConversao / 2;
@@ -177,15 +172,17 @@ void converterDeciBin(int numBaseConversao) {
             printf("%d", binaryNum[j]);
         printf("\n");
     }
-    else 
+    else if(numBaseConversao == 0)
         printf("BINARIO: 0\n");
+    else    
+        printf("!!! ERRO: NUMERO BASE INVALIDO !!!\n");
 }
 
 void converterDeciOcta(int numBaseConversao) {
     int octalNum[100];
     int i = 0;
 
-    if(numBaseConversao) {
+    if(numBaseConversao > 0) {
         while (numBaseConversao != 0) {
             octalNum[i] = numBaseConversao % 8;
             numBaseConversao = numBaseConversao / 8;
@@ -196,15 +193,17 @@ void converterDeciOcta(int numBaseConversao) {
             printf("%d", octalNum[j]);
         printf("\n");
     }
-    else 
+    else if(numBaseConversao == 0)
         printf("OCTAL: 0\n");
+    else    
+        printf("!!! ERRO: NUMERO BASE INVALIDO !!!\n");
 }
 
 void converterDeciHexa(int numBaseConversao) {
     char hexaDeciNum[100];
     int i = 0;
 
-    if(numBaseConversao) {
+    if(numBaseConversao > 0) {
         while (numBaseConversao != 0) {
             int temp  = 0;
             temp = numBaseConversao % 16;
@@ -222,8 +221,10 @@ void converterDeciHexa(int numBaseConversao) {
             printf("%c", hexaDeciNum[j]);
         printf("\n");
     }
-    else 
+    else if(numBaseConversao == 0)
         printf("HAXADECIMAL: 0\n");
+    else    
+        printf("!!! ERRO: NUMERO BASE INVALIDO !!!\n");
 }
 
 
