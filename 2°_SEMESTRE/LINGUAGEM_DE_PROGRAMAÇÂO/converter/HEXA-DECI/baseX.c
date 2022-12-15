@@ -16,10 +16,15 @@ int main(int argc, char *argv[]) {
 }
 
 void executar(int argc, char *argv[]) {
-    
-    converterNumerosBaseDecimal(argc, argv);
-    //if(!tratarErro)
-        mostraNumeros(argc, argv, numBaseConversao);
+
+    if(tratarOpcaoHelp(argc, argv))
+        mensagemHelp();
+    else {
+        if(!tratarErro(argc, argv)) {
+            converterNumerosBaseDecimal(argc, argv);
+            mostraNumeros(argc, argv, numBaseConversao);
+        }
+    }
 }
 
 void mostraNumeros(int argc, char *argv[], int numBaseConversao) {
@@ -29,7 +34,8 @@ void mostraNumeros(int argc, char *argv[], int numBaseConversao) {
         if(strcmp(argv[i], comandosValidos[4]) == 0) {
             converterDeciBin(numBaseConversao);
             converterDeciOcta(numBaseConversao);
-            printf("DECIMAL: %d\n", numBaseConversao);
+            if(numBaseConversao >= 0)
+                printf("DECIMAL: %d\n", numBaseConversao); 
             converterDeciHexa(numBaseConversao);
             break;
        }

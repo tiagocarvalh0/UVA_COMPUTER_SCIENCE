@@ -9,7 +9,7 @@
 #define ERRO -1
 
 int checarQntParametro();
-int tratarOpcao();
+int tratarOpcaoHelp();
 int tratarErro();
 
 void converterNumerosBaseDecimal();
@@ -23,12 +23,15 @@ void converterDeciOcta();
 void converterDeciHexa();
 
 void mensagemErroQntParametro();
+void mensagemErroParametroInvalido();
 void limparTela();
 void mensagemHelp();
 
     const typedef enum {TAM_COMANDOS = 6, QNT_COMANDOS = 7}T_TAM_COMANDOS;
+    const typedef enum {BASE_BIN = 0, BASE_OCTA, BASE_DECI, BASE_HEXA}TT;
 
     const char comandosValidos [TAM_COMANDOS][QNT_COMANDOS] = {"--b", "--o", "--d", "--h", "--all", "--help"};
+
 
     const typedef enum {NUMERO_INFORMADO = 1, BASE_NUMERO_INFORMADO, BASE_CONVER_01, BASE_CONVER_02, BASE_CONVER_03, BASE_CONVER_04} T_PARAMETRO;
 
@@ -44,30 +47,57 @@ int checarQntParametro(int argc, char *argv[]) {
     if(!(strcmp(argv[1], comandosValidos[5]) == 0) && (argc <= 3)) return FALSE;
 }
 
-int tratarOpcao(int argc, char *argv[]) {
+int tratarOpcaoHelp(int argc, char *argv[]) {
+    if(argc == 1)
+        return FALSE;
     if(strcmp(argv[1], comandosValidos[5]) == 0)
-        return HELP;
+        return TRUE;
+    else
+        return FALSE;
 }
 
+// VERIFICA SE A ALGUM ERRO NA LINHA DE COMANDO
 int tratarErro(int argc, char *argv[]) {
-         if(strcmp(argv[BASE_NUMERO_INFORMADO], comandosValidos[0]) == 0) return FALSE;
-    else if(strcmp(argv[BASE_NUMERO_INFORMADO], comandosValidos[1]) == 0) return FALSE;
-    else if(strcmp(argv[BASE_NUMERO_INFORMADO], comandosValidos[2]) == 0) return FALSE;
-    else if(strcmp(argv[BASE_NUMERO_INFORMADO], comandosValidos[3]) == 0) return FALSE;
-    else return TRUE;
+
+    /*if(argc == 2) {
+        if(strcmp(argv[1], comandosValidos[5]) == 0)
+            return TRUE;
+        else    
+            return FALSE;
+    }*/
+
+    // VERIFICA SE QNT DE ARGUMENTOS E VALIDA
+    /*if(argc == 1 || argc == 3) {
+        mensagemErroQntParametro();
+        return TRUE;
+    }*/
+
+    // VERIFICA SE BASE_NUMERO_INFORMADO == comandosValidos
+    for (int i = 0; i < 4; i++) {
+         if(strcmp(argv[i], comandosValidos[i]) == 0) 
+            return FALSE;
+    }
+
+    return TRUE;
 }
 
+// VERIFICA QUAL BASE INFORMADA PARA CONVERTSÃO
 void converterNumerosBaseDecimal(int argc, char *argv[]) {
-    if(strcmp(argv[BASE_NUMERO_INFORMADO], comandosValidos[0]) == 0) 
+    if(strcmp(argv[BASE_NUMERO_INFORMADO], comandosValidos[BASE_BIN]) == 0) 
         numBaseConversao = converterBinDeci(argc, argv);
-    if(strcmp(argv[BASE_NUMERO_INFORMADO], comandosValidos[1]) == 0) 
+    else if(strcmp(argv[BASE_NUMERO_INFORMADO], comandosValidos[BASE_OCTA]) == 0) 
         numBaseConversao = converterOctaDeci(argc, argv);
-    if(strcmp(argv[BASE_NUMERO_INFORMADO], comandosValidos[2]) == 0)
+    else if(strcmp(argv[BASE_NUMERO_INFORMADO], comandosValidos[BASE_DECI]) == 0)
         numBaseConversao = converterDeciDeci(argc, argv);
-    if(strcmp(argv[BASE_NUMERO_INFORMADO], comandosValidos[3]) == 0)
+    else if(strcmp(argv[BASE_NUMERO_INFORMADO], comandosValidos[BASE_HEXA]) == 0)
         numBaseConversao = converterHexaDeci(argc, argv);
+    else {
+        numBaseConversao = ERRO;
+        mensagemErroParametroInvalido();
+    }
 }
 
+// CONVERTER O "--b" PARA NUM_BASE
 int converterBinDeci(int argc, char *argv[]) {
     int decimal = 0;
     strcpy(binary, argv[1]);
@@ -83,12 +113,13 @@ int converterBinDeci(int argc, char *argv[]) {
     if(OK_CHECK == len)
         return decimal;
     else {
-        printf("ERRO: NUMERO INVALIDO\n");
         OK_CHECK = 0;
+        mensagemErroParametroInvalido();
         return ERRO;
     } 
 }
 
+// CONVERTE O NUMERO "--o" PARA NUM_BASE
 int converterOctaDeci(int argc, char *argv[]) {
     int decimal = 0;
     strcpy(octal, argv[1]);
@@ -104,12 +135,13 @@ int converterOctaDeci(int argc, char *argv[]) {
     if(OK_CHECK == len)
         return decimal;
     else {
-        printf("ERRO: NUMERO INVALIDO\n");
         OK_CHECK = 0;
+        mensagemErroParametroInvalido();
         return ERRO;
     } 
 }
 
+// CONVERTER O NUMERO "--d" PARA NUM_BASE
 int converterDeciDeci(int argc, char *argv[]) {
     int decimal = 0;
     strcpy(deci, argv[1]);
@@ -125,12 +157,13 @@ int converterDeciDeci(int argc, char *argv[]) {
     if(OK_CHECK == len)
         return decimal;
     else {
-        printf("ERRO: NUMERO INVALIDO\n");
         OK_CHECK = 0;
+        mensagemErroParametroInvalido();
         return ERRO;
     } 
 }
 
+//CONVERTE O NUMEMO "--h" PARA NUM_BASE
 int converterHexaDeci(int argc, char *argv[]) {
     int decimal = 0;
     strcpy(hex, argv[1]);
@@ -148,16 +181,16 @@ int converterHexaDeci(int argc, char *argv[]) {
             OK_CHECK++;
         }
     }
-
     if(OK_CHECK == len)
         return decimal;
     else {
-        printf("ERRO\n");
         OK_CHECK = 0;
-        return FALSE;
+        mensagemErroParametroInvalido();
+        return ERRO;
     } 
 }
 
+// CONVERTE O NUM_BASE PARA "--b"
 void converterDeciBin(int numBaseConversao) {
     int binaryNum[32];
     int i = 0;
@@ -174,10 +207,9 @@ void converterDeciBin(int numBaseConversao) {
     }
     else if(numBaseConversao == 0)
         printf("BINARIO: 0\n");
-    else    
-        printf("!!! ERRO: NUMERO BASE INVALIDO !!!\n");
 }
 
+// CONVERTE O NUM_BASE PARA "--o"
 void converterDeciOcta(int numBaseConversao) {
     int octalNum[100];
     int i = 0;
@@ -195,10 +227,9 @@ void converterDeciOcta(int numBaseConversao) {
     }
     else if(numBaseConversao == 0)
         printf("OCTAL: 0\n");
-    else    
-        printf("!!! ERRO: NUMERO BASE INVALIDO !!!\n");
 }
 
+// CONVERTE O NUM_BASE PARA "--h"
 void converterDeciHexa(int numBaseConversao) {
     char hexaDeciNum[100];
     int i = 0;
@@ -223,8 +254,6 @@ void converterDeciHexa(int numBaseConversao) {
     }
     else if(numBaseConversao == 0)
         printf("HAXADECIMAL: 0\n");
-    else    
-        printf("!!! ERRO: NUMERO BASE INVALIDO !!!\n");
 }
 
 
