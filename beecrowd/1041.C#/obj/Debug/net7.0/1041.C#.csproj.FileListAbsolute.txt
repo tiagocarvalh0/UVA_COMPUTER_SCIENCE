@@ -1,0 +1,15 @@
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\obj\Debug\net7.0\1041.C#.csproj.AssemblyReference.cache
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\obj\Debug\net7.0\1041.C#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\obj\Debug\net7.0\1041.C#.AssemblyInfoInputs.cache
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\obj\Debug\net7.0\1041.C#.AssemblyInfo.cs
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\obj\Debug\net7.0\1041.C#.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\bin\Debug\net7.0\1041.C#.exe
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\bin\Debug\net7.0\1041.C#.deps.json
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\bin\Debug\net7.0\1041.C#.runtimeconfig.json
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\bin\Debug\net7.0\1041.C#.dll
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\bin\Debug\net7.0\1041.C#.pdb
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\obj\Debug\net7.0\1041.C#.dll
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\obj\Debug\net7.0\refint\1041.C#.dll
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\obj\Debug\net7.0\1041.C#.pdb
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\obj\Debug\net7.0\1041.C#.genruntimeconfig.cache
+C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\beecrowd\1041.C#\obj\Debug\net7.0\ref\1041.C#.dll
