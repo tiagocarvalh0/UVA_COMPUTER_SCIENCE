@@ -1,9 +1,0 @@
-================
-BILHETE: 0005
-DATA: 22/05/23
-EMITIDO: 10:54
-LOCAL: CE
-HORARIO: 11:00
-VALOR:R$ 4.00
-ANIMAL: CACHORRO
-================

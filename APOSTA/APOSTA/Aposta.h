@@ -1,4 +1,0 @@
-
-void telaMenu();
-void menuInicial();
-

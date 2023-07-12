@@ -1,6 +1,0 @@
-﻿  APOSTA.cpp
-C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\APOSTA\APOSTA\APOSTA.cpp(122,46): error C2664: 'void lxw_rowcol_to_cell(char *,lxw_row_t,lxw_col_t)': não é possível converter um argumento 1 de 'lxw_row_t' em 'char *'
-C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\APOSTA\APOSTA\APOSTA.cpp(122,28): message : Conversão de tipo integral para tipo de ponteiro requer reinterpret_cast, conversão C-style ou conversão function-style
-C:\vcpkg\installed\x86-windows\include\xlsxwriter\utility.h(154,6): message : consulte a declaração de 'lxw_rowcol_to_cell'
-C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\APOSTA\APOSTA\APOSTA.cpp(126,17): error C2065: 'LXW_CONDITIONAL_FORMAT_CELL_IS': identificador não declarado
-C:\Users\User\Documents\UVA_COMPUTER_SCIENCE\APOSTA\APOSTA\APOSTA.cpp(130,17): error C2065: 'LXW_CONDITIONAL_FORMAT_CELL_IS': identificador não declarado
