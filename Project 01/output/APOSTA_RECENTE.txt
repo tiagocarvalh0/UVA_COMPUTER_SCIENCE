@@ -1,0 +1,9 @@
+================
+BILHETE: 0002
+DATA: 21/05/23
+EMITIDO: 15:47
+LOCAL: RJ
+HORARIO: 11:00
+VALOR:R$ 1.00
+ANIMAL: AVESTRUZ
+================

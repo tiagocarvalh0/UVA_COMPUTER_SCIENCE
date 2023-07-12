@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "Main",
+      "projectName": "beecrowd_82e3a5df"
+    },
+    {
       "name": ".NET Core Launch (console)",
       "type": "coreclr",
       "request": "launch",
@@ -12,8 +19,6 @@
       "stopAtEntry": false,
       "console": "internalConsole"
     },
-  
-    
     {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
