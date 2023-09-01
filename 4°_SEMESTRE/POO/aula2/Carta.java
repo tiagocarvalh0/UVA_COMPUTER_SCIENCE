@@ -1,5 +1,13 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package aula2;
 
+/**
+ *
+ * @author placi
+ */
 public class Carta {
     private String naipe,valor;
     private boolean visivel=false;
