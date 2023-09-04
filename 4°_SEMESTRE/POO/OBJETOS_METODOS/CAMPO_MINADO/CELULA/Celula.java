@@ -2,7 +2,7 @@ package CELULA;
 
 public class Celula {
     private String value; // informa quantidade de bombas proximas 
-    private boolean isABomb = false, isVisivel = true;
+    private boolean isABomb = false, isVisivel = false;
 
     public Celula() {}    
     
