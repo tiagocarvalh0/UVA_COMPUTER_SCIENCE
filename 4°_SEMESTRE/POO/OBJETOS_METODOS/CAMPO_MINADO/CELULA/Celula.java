@@ -5,10 +5,6 @@ public class Celula {
     private boolean isABomb = false, isVisivel = false;
 
     public Celula() {}    
-    
-    public void virar() {
-        isVisivel = !isVisivel;
-    }
 
     public String getValue() {
         if(isVisivel)
@@ -18,10 +14,7 @@ public class Celula {
     }
 
     public boolean getIsABomb() {
-        if (isABomb)
-            return true;
-        else
-            return false;
+        return isABomb;
     }
 
     public boolean getIsVisivel() {

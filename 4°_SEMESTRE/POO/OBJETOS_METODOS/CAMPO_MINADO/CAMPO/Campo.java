@@ -44,15 +44,15 @@ public class Campo {
                 }
             }
         }
-        if(!campo[i][x].getIsABomb())
+        if(campo[i][x].getIsABomb())
+            campo[i][x].setValue("X ");
+        else
             campo[i][x].setValue(Integer.toString(count)+" ");
 
-        if(this.campo[i][x].getIsABomb())
-            this.campo[i][x].setValue("X ");
     }
 
     public boolean informarRowCol(Celula[][] tabuleiro, int row, int col) {
-        if(this.campo[row][col].getIsABomb()) {
+        if(campo[row][col].getIsABomb()) {
             System.out.println("!!!!! BOMBA !!!!!");
                 return false;
         }
@@ -67,12 +67,13 @@ public class Campo {
             if(tabuleiro[row][col].getIsVisivel() == false) {
                 tabuleiro[row][col].setVisivel(true);
                 if(tabuleiro[row][col].getValue().equals("0 ")) {
-                    System.out.println("OKOK");
                     revelarEspacosBrancos(tabuleiro, row-1, col);
                     revelarEspacosBrancos(tabuleiro, row+1, col);
                     revelarEspacosBrancos(tabuleiro, row, col-1);
                     revelarEspacosBrancos(tabuleiro, row, col+1);
                 }
+                if(tabuleiro[row][col].getValue().equals("0 "))
+                    tabuleiro[row][col].setValue("  ");
             }
         }
     }
@@ -85,11 +86,20 @@ public class Campo {
     }
 
     public void printCampo() {
+        System.out.println("  ROW 0 1 2 3 4 5 6 7 8");
+        System.out.print("COL ");
+        //System.out.println(" -  -  -  -  -  -  -  -  -");
         for(int i = 0; i < 9; i++) {
+            if(i == 0)
+                System.out.print( i + " ");
+            else
+                System.out.print("    " + i + "|");
             for(int x = 0; x < 9; x++) {
                 System.out.print(campo[i][x].getValue());
             }
-            System.out.printf("\n");
+            System.out.print("\n");
+            //System.out.println(" -  -  -  -  -  -  -  -  -");
         }
+        //System.out.println(" _  _  _  _  _  _  _  _  _");
     }
 }
