@@ -1,0 +1,13 @@
+01. Baseado na UML abaixo crie as classes apresentadas.
+
+
+1.1 Na classe Pessoa crie um construtor para os dois atributos;
+
+
+1.2 Na classe Cliente crie um construtor com os três atributos (nome, cpf e código) utilizando a implementação do construtor da superclasse
+
+
+1.3 Na classe Pacote a lista de canais deve ser com ArrayList
+
+
+1.4 Na classe Canal a lista de programações deve ser com ArrayList.
