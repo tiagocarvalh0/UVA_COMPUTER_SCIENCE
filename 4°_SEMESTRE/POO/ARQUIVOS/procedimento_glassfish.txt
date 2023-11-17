@@ -1,0 +1,73 @@
+1. Instale o jdk 1.8 ou 8
+2. Na instalação do Netbeans (12.5) ele vai apontar para a versão 8 do java
+    
+Caso você já tenha instalado com outra versão do java:
+    - Clique em Tools
+    - Clique em Java Platforms 
+    - Clique em Add Plataforms
+    - Clique em Next
+    - Escolha a pasta onde está o java 1.8 (exemplo: c:\Arquivos de Programas\java)
+    - Next
+    - Finish
+
+Fazendo isso você ficará com 2 versões ou mais do java, sendo necessário a mudança do default
+para java 1.8
+ 
+    - Edite o arquivo o arquivo netbeans.conf 
+(exemplo: C:\Program Files\NetBeans-11.1\netbeans\etc\netbeans.conf)
+    - Altere a linha netbeans_jdkhome
+(exemplo: netbeans_jdkhome="C:\Program Files\Java\jdk1.8.0_261")
+
+- Entre novamente no netbeans, cerficando que a versão  default é a 1.8 ou 8
+
+3. Instale a versão 5.1 do GlassFish
+
+     - Clique em Services
+     - Em Servers, clique no botão direito e selecione Add Server
+     - Selecione GlassFish e Next    
+     - Selecione GlassFish Server 5.1.0
+     - Marque a opção "I have read and accept the license agreement"
+     - Clique em Download now
+     - Após baixar clique em Finish
+
+
+Os passos de 4 a 13 devem ser executados quando formos trabalhar com banco de dados
+
+
+4. Baixe o arquivo mysql-connector-java-5.1.13.jar e grave dentro de uma pasta fora da
+    pasta download (exemplo: c:\arquivos de programa\java)
+
+
+
+
+5. Instale o Connect do MySql dentro do Netbeans
+
+     
+     - Clique em Services
+     - Clique no + do Databases
+     - Clique no + do Drivers
+     - Clique com o botão direito em cima de MySQL
+     - Escolha Customize
+     - Clique em Add e adicione o arquivo mysql-connector-java-5.1.13.jar
+     - Clique em Find
+     - Clique OK
+
+6. Instale o wampserver com php e mysql
+
+7. Execute o wampserver (ele tem que está verde)
+
+8. Clique no ícone, depois em phpMyAdmin (login: root, sem senha)
+
+9. Você pode criar o banco no phpMyAdmin
+
+10. No Netbeans, clique em services, com o botão direito em Databases
+
+11. Escolha New Connection
+
+12. Escolha o Driver Mysql e Next
+
+13. Coloca os dados do banco (Database) e Finish (A conexão vai aparecer em Services)
+
+
+
+ 
